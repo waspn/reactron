@@ -3,7 +3,6 @@ const path = require('path')
 const isDev = require('electron-is-dev')
 
 let mainWindow
-let infoWindow
 
 function createWindow () {
   mainWindow = new BrowserWindow({
@@ -17,23 +16,6 @@ function createWindow () {
       : `file://${path.join(__dirname, '../build/index.html')}`
   )
   mainWindow.on('closed', () => (mainWindow = null))
-
-  infoWindow = new BrowserWindow({
-    width: 900,
-    height: 500,
-    parent: mainWindow,
-    show: false,
-    webPreferences: { nodeIntegration: true }
-  })
-  infoWindow.loadURL(
-    isDev
-      ? 'http://localhost:3000/info'
-      : `file://${path.join(__dirname, '../build/index.html')}`
-  )
-  infoWindow.on('closed', (event) => {
-    event.preventDefault()
-    infoWindow.hide()
-  })
 }
 app.on('ready', createWindow)
 app.on('window-all-closed', () => {
@@ -48,8 +30,19 @@ app.on('activate', () => {
 })
 
 ipcMain.on('show-more-info', (event, info) => {
-  // console.log('info', info)
-  // console.log('get-show-more-info')
-  infoWindow.show()
-  infoWindow.webContents.send('faq-detail', info)
+  const infoWindow = new BrowserWindow({
+    width: 900,
+    height: 500,
+    // parent: mainWindow,
+    // show: false,
+    webPreferences: { nodeIntegration: true }
+  })
+  infoWindow.loadURL(
+    isDev
+      ? 'http://localhost:3000/info'
+      : `file://${path.join(__dirname, '../build/index.html')}`
+  )
+  infoWindow.webContents.on('did-frame-finish-load', () => {
+    infoWindow.webContents.send('faq-detail', info)
+  })
 })

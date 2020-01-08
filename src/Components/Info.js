@@ -19,8 +19,8 @@ class Info extends Component {
     console.log('DETAIL sTESAETAS', this.state.detail)
     const { detail } = this.state
     return (
-      <div>
-        <h3>{detail.question}</h3>
+      <div style={{ padding: 20 }}>
+        <h2>{detail.question}</h2>
         <hr />
         {detail.answer && detail.answer.map(ans => <p>{ans}</p>)}
       </div>

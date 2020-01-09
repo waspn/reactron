@@ -12,7 +12,7 @@ class FaqPanel extends Component<FaqPanelProps, {}> {
 
   render() {
     const { faqData } = this.props
-    return faqData.map((info: FaqInfo, key: number) => {
+    return faqData.map((info: any, key: number) => {
       return (
         <div>
           <button

@@ -1,21 +1,25 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import logo from './logo.svg'
 import './App.css'
 import FaqPanel from './Components/FaqPanel'
 
-class App extends Component {
+const logo = require('./logo.svg')
 
-  constructor (props) {
+interface MainProps { data: Array<any> }
+interface MainState { faqData: Array<any> }
+
+class App extends Component<MainProps, MainState> {
+
+  constructor (props: MainProps) {
     super(props)
     this.state = {
       faqData: []
     }
   }
 
-  getFaqData = () => {
+  getFaqData = ():void => {
     axios.get('http://localhost:8765/faq')
-    .then(res => { this.setState({ faqData: res.data.data }) })
+    .then((res: any) => { this.setState({ faqData: res.data.data }) })
     .catch(err => {console.log('err', err)})
   }
 

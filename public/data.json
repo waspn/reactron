@@ -1,0 +1,27 @@
+{
+  "data": [
+    {
+      "question": "What if I need more numbers than is allowed by the forms?",
+      "answer": [
+        "Currently, there isn't a lot you can do, except email us and tell us this is a problem for you",
+        "If you can do your own programming, you may be able to use the pregenerated files. They contain large amounts of pregenerated raw random data that you can download and use as you please.",
+        "The other two modes allow you to select a pregenerated randomization"
+      ]
+    },
+    {
+      "question": "What is the Third-Party Draw Service for?",
+      "answer": [
+        "The Third-Party Draw Service is for professional operators of raffles, sweepstakes, promotional giveaways and other lottery type services.",
+        "It has been operating since 2007 and is being used by bloggers, charities and by PR and Media companies"
+      ]
+    },
+    {
+      "question": " How do the different types of drawings work?",
+      "answer": [
+        "Private drawings are only visible to someone who holds the username and password associated with the owner account. ",
+        "Public drawings have records where the full details are visible to anyone who visits the RANDOM.ORG web site.",
+        "Entrant-accessible drawings have records in which the full details of entrants and winners are only visible to the owner."
+      ]
+    }
+  ]
+}

@@ -3,12 +3,17 @@ import { FaqInfo } from './FaqPanel'
 
 const { ipcRenderer } = window.require('electron')
 
-class Info extends Component<FaqInfo, any> {
+interface FaqInfoState { detail: { question: string, answer: Array<string> } }
+
+class Info extends Component<FaqInfo, FaqInfoState> {
 
   constructor(props: FaqInfo) {
     super(props)
     this.state = {
-      detail: {}
+      detail: {
+        question: '',
+        answer: []
+      }
     }
   }
 
